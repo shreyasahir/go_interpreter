@@ -3,7 +3,8 @@ package ast
 import (
 	"go_interpreter/token"
 )
-type Node interface{
+
+type Node interface {
 	TokenLiteral() string
 }
 
@@ -18,12 +19,12 @@ type Expression interface {
 }
 
 type Program struct {
-statements []Statement
+	statements []Statement
 }
 
 type LetStatement struct {
 	Token token.Token // the token.Let token
-	Name *Identifier
+	Name  *Identifier
 	value *Expression
 }
 
@@ -35,10 +36,9 @@ func (p *Program) TokenLiteral() string {
 	}
 }
 
-func (ls * LetStatement) statementNode() {}
+func (ls *LetStatement) statementNode() {}
 
-func (ls * LetStatement) TokenLiteral() string { return ls.Token.Literal }
-
+func (ls *LetStatement) TokenLiteral() string { return ls.Token.Literal }
 
 type Identifier struct {
 	Token token.Token
